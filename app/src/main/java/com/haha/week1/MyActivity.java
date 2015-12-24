@@ -1,5 +1,6 @@
 package com.haha.week1;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,7 +20,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class MyActivity extends AppCompatActivity {
+public class MyActivity extends AppCompatActivity implements AFragment.OnFragmentInteractionListener, BFragment.OnFragmentInteractionListener, CFragment.OnFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -86,6 +87,22 @@ public class MyActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //Implementation of fragment interaction (?)
+    @Override
+    public void onAFragmentInteraction(String str) {
+
+    }
+
+    @Override
+    public void onBFragmentInteraction(String str) {
+
+    }
+
+    @Override
+    public void onCFragmentInteraction(String str) {
+
     }
 
     /**
