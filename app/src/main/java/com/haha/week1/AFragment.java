@@ -7,7 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,9 +36,10 @@ public class AFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
+        String[] data = {"A", "B", "C"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        ListView myList = (ListView) findViewById(R.id.listView);
+        myList.setAdapter(adapter);
     }
 
     @Override
