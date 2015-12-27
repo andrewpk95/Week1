@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MyActivity extends AppCompatActivity implements AFragment.OnFragmentInteractionListener, BFragment.OnFragmentInteractionListener, CFragment.OnFragmentInteractionListener {
@@ -140,6 +142,38 @@ public class MyActivity extends AppCompatActivity implements AFragment.OnFragmen
         }
     }
 
+    public static class FragmentA extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+
+        public FragmentA() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static FragmentA newInstance() {
+            FragmentA fragment = new FragmentA();
+            Bundle args = new Bundle();
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_a, container, false);
+            String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "LLLLL", "M", "N"};
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
+            ListView myList = (ListView) rootView.findViewById(R.id.listView1);
+            myList.setAdapter(adapter);
+            return rootView;
+        }
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -155,10 +189,10 @@ public class MyActivity extends AppCompatActivity implements AFragment.OnFragmen
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch(position){
-                case 0: return  AFragment.newInstance();
+                case 0: return  FragmentA.newInstance();
                 case 1: return  BFragment.newInstance();
                 case 2: return  CFragment.newInstance();
-                default: return AFragment.newInstance();
+                default: return FragmentA.newInstance();
             }
         }
 

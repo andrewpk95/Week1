@@ -1,7 +1,6 @@
 package com.haha.week1;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -36,17 +35,20 @@ public class AFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] data = {"A", "B", "C"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
-        ListView myList = (ListView) findViewById(R.id.listView);
-        myList.setAdapter(adapter);
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a, container, false);
+        View view = inflater.inflate(R.layout.fragment_a, container, false);
+        String[] data = {"A", "B", "C"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, data);
+        ListView myList = (ListView) getActivity().findViewById(R.id.listView1);
+        myList.setAdapter(adapter);
+        return view;
     }
 
     @Override
