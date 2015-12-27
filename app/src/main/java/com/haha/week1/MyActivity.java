@@ -1,6 +1,5 @@
 package com.haha.week1;
 
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,10 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MyActivity extends AppCompatActivity implements AFragment.OnFragmentInteractionListener, BFragment.OnFragmentInteractionListener, CFragment.OnFragmentInteractionListener {
+public class MyActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -91,22 +91,6 @@ public class MyActivity extends AppCompatActivity implements AFragment.OnFragmen
         return super.onOptionsItemSelected(item);
     }
 
-    //Implementation of fragment interaction (?)
-    @Override
-    public void onAFragmentInteraction(String str) {
-
-    }
-
-    @Override
-    public void onBFragmentInteraction(String str) {
-
-    }
-
-    @Override
-    public void onCFragmentInteraction(String str) {
-
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -166,10 +150,72 @@ public class MyActivity extends AppCompatActivity implements AFragment.OnFragmen
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_a, container, false);
-            String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "LLLLL", "M", "N"};
+            /**
+             * Implement JSON reading method here and put it into "data" array.
+             */
+            String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S"};
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
             ListView myList = (ListView) rootView.findViewById(R.id.listView1);
             myList.setAdapter(adapter);
+            return rootView;
+        }
+    }
+
+    public static class FragmentB extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+
+        public FragmentB() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static FragmentB newInstance() {
+            FragmentB fragment = new FragmentB();
+            Bundle args = new Bundle();
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_b, container, false);
+            GridView myGrid = (GridView) rootView.findViewById(R.id.gridview1);
+            myGrid.setAdapter(new ImageAdapter(getActivity()));
+            return rootView;
+        }
+    }
+
+    public static class FragmentC extends Fragment {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+
+        public FragmentC() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static FragmentC newInstance() {
+            FragmentC fragment = new FragmentC();
+            Bundle args = new Bundle();
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_c, container, false);
+
             return rootView;
         }
     }
@@ -190,8 +236,8 @@ public class MyActivity extends AppCompatActivity implements AFragment.OnFragmen
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch(position){
                 case 0: return  FragmentA.newInstance();
-                case 1: return  BFragment.newInstance();
-                case 2: return  CFragment.newInstance();
+                case 1: return  FragmentB.newInstance();
+                case 2: return  FragmentC.newInstance();
                 default: return FragmentA.newInstance();
             }
         }
