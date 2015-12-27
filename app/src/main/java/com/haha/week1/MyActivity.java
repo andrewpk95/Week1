@@ -56,7 +56,7 @@ public class MyActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class MyActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        */
     }
 
 
@@ -127,18 +127,10 @@ public class MyActivity extends AppCompatActivity {
     }
 
     public static class FragmentA extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
 
         public FragmentA() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         public static FragmentA newInstance() {
             FragmentA fragment = new FragmentA();
             Bundle args = new Bundle();
@@ -162,18 +154,10 @@ public class MyActivity extends AppCompatActivity {
     }
 
     public static class FragmentB extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
 
         public FragmentB() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         public static FragmentB newInstance() {
             FragmentB fragment = new FragmentB();
             Bundle args = new Bundle();
@@ -192,18 +176,10 @@ public class MyActivity extends AppCompatActivity {
     }
 
     public static class FragmentC extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
 
         public FragmentC() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         public static FragmentC newInstance() {
             FragmentC fragment = new FragmentC();
             Bundle args = new Bundle();
@@ -215,7 +191,9 @@ public class MyActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_c, container, false);
-
+            /*
+            Implement what to do here for our Tab C...
+             */
             return rootView;
         }
     }
