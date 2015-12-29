@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-/**
- * Created by andrewpk95 on 12/27/15.
- */
 public class ImageAdapter extends BaseAdapter{
 
     private Context mContext;
@@ -51,19 +48,37 @@ public class ImageAdapter extends BaseAdapter{
 
     // Keep all Images in array
     public Integer[] mThumbIds = {
-            /*
-            Implement image listing here
-             */
-            R.drawable.sample_0, R.drawable.sample_0,
-            R.drawable.sample_0, R.drawable.sample_0,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7
+            R.drawable.sample_0,
+            R.drawable.sample_1,
+            R.drawable.sample_2,
+            R.drawable.sample_3,
+            R.drawable.sample_4,
+            R.drawable.sample_5,
+            R.drawable.sample_6,
+            R.drawable.sample_7,
+            R.drawable.sample_0,
+            R.drawable.sample_1,
+            R.drawable.sample_2,
+            R.drawable.sample_3,
+            R.drawable.sample_4,
+            R.drawable.sample_5,
+            R.drawable.sample_6,
+            R.drawable.sample_7,
+            R.drawable.sample_0,
+            R.drawable.sample_1,
+            R.drawable.sample_2,
+            R.drawable.sample_3,
+            R.drawable.sample_4,
+            R.drawable.sample_5,
+            R.drawable.sample_6,
+            R.drawable.sample_7,
+            R.drawable.sample_0,
+            R.drawable.sample_1,
+            R.drawable.sample_2,
+            R.drawable.sample_3,
+            R.drawable.sample_4,
+            R.drawable.sample_5,
+            R.drawable.sample_6,
+            R.drawable.sample_7,
     };
 }
