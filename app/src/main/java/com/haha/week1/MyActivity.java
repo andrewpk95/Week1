@@ -1,5 +1,6 @@
 package com.haha.week1;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -175,8 +177,11 @@ public class MyActivity extends AppCompatActivity {
         }
     }
 
+
+
     public static class FragmentC extends Fragment {
 
+        Button btn;
         public FragmentC() {
         }
 
@@ -191,11 +196,16 @@ public class MyActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_c, container, false);
-            /*
-            Implement what to do here for our Tab C...
-             */
+            btn = (Button) rootView.findViewById(R.id.button1);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), SearchActivity.class));
+                }
+            });
             return rootView;
         }
+
     }
 
     /**

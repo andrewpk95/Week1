@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.haha.week1.CFragment">
 
-
-    <SearchView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView1"
-        android:layout_gravity="center|top" />
+        android:text="Search"
+        android:id="@+id/button1"
+        android:layout_gravity="center"
+        />
 </FrameLayout>
