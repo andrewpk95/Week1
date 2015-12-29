@@ -128,6 +128,16 @@ public class MyActivity extends AppCompatActivity {
 
     public static class FragmentA extends Fragment {
 
+        ListView listView;
+        JSONArray jsonArray;
+
+        static final String TAG_NAME = "NAME";
+        static final String TAG_ADDRESS = "ADDRESS";
+
+        String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S"};
+
+        ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
+
         public FragmentA() {
         }
 
@@ -138,18 +148,47 @@ public class MyActivity extends AppCompatActivity {
             return fragment;
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_a, container, false);
-            /**
-             * Implement JSON reading method here and put it into "data" array.
-             */
-            String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
-            ListView myList = (ListView) rootView.findViewById(R.id.listView1);
-            myList.setAdapter(adapter);
-            return rootView;
+        public void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            /*try {
+
+            // String line = getJsonFromUrl("https...");
+
+                String line =
+                "{{\"name\":\"배트맨\",\"address\":\"고담\"},"+
+                        "{\"name\":\"슈퍼맨\",\"address\":\"뉴욕\"},"+
+                        "{\"name\":\"앤트맨\",\"address\":\"LA\"}}";
+                jsonArray = new JSONArray(line);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject c = jsonArray.getJSONObject(i);
+
+                    // Storing  JSON item in a Variable
+                    String name = c.getString(TAG_NAME);
+                    String address = c.getString(TAG_ADDRESS);
+
+                    // Adding value HashMap key => value
+                    HashMap<String, String> map = new HashMap<String, String>();
+                    map.put(TAG_NAME, name);
+                    map.put(TAG_ADDRESS, address);
+
+                    oslist.add(map);
+                }
+
+            } catch (JSONException e) {;}
+            */
+
+        }
+
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+            View view = inflater.inflate(R.layout.fragment_a, container, false);
+            listView = (ListView) view.findViewById(R.id.listView1);
+            SimpleAdapter adapter = new SimpleAdapter(getContext(), oslist, android.R.layout.simple_list_item_1,
+                    new String[]{"name", "address"}, new int[]{android.R.id.text1, android.R.id.text2});
+            ArrayAdapter<String> original = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
+            listView.setAdapter(original);
+            return view;
         }
     }
 
