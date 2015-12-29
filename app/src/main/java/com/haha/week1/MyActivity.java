@@ -1,5 +1,7 @@
 package com.haha.week1;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,16 +13,35 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class MyActivity extends AppCompatActivity {
 
@@ -56,16 +77,7 @@ public class MyActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
+
     }
 
 
@@ -128,6 +140,21 @@ public class MyActivity extends AppCompatActivity {
 
     public static class FragmentA extends Fragment {
 
+        ListView listView;
+        JSONArray jsonArray;
+
+        static final String TAG_NAME = "NAME";
+        static final String TAG_ADDRESS = "ADDRESS";
+
+        String line =
+                "{{\"name\":\"배트맨\",\"address\":\"고담\"},"+
+                        "{\"name\":\"슈퍼맨\",\"address\":\"뉴욕\"},"+
+                        "{\"name\":\"앤트맨\",\"address\":\"LA\"}}";
+
+        String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S"};
+
+        ArrayList<HashMap<String, String>> oslist = new ArrayList<HashMap<String, String>>();
+
         public FragmentA() {
         }
 
@@ -138,20 +165,43 @@ public class MyActivity extends AppCompatActivity {
             return fragment;
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_a, container, false);
-            /**
-             * Implement JSON reading method here and put it into "data" array.
-             */
-            String[] data = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S"};
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
-            ListView myList = (ListView) rootView.findViewById(R.id.listView1);
-            myList.setAdapter(adapter);
-            return rootView;
+        public void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            /*try {
+                jsonArray = new JSONArray(line);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject c = jsonArray.getJSONObject(i);
+
+                    // Storing  JSON item in a Variable
+                    String name = c.getString(TAG_NAME);
+                    String address = c.getString(TAG_ADDRESS);
+
+                    // Adding value HashMap key => value
+                    HashMap<String, String> map = new HashMap<String, String>();
+                    map.put(TAG_NAME, name);
+                    map.put(TAG_ADDRESS, address);
+
+                    oslist.add(map);
+                }
+
+            } catch (JSONException e) {;}
+            */
+
+        }
+
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+            View view = inflater.inflate(R.layout.fragment_a, container, false);
+            listView = (ListView) view.findViewById(R.id.listView1);
+            SimpleAdapter adapter = new SimpleAdapter(getContext(), oslist, android.R.layout.simple_list_item_1,
+                    new String[]{"name", "address"}, new int[]{android.R.id.text1, android.R.id.text2});
+            ArrayAdapter<String> original = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
+            listView.setAdapter(original);
+            return view;
         }
     }
+
 
     public static class FragmentB extends Fragment {
 
