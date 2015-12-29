@@ -14,6 +14,6 @@
         android:id="@+id/searchActionBarItem"
         android:title="Search Title"
         appcompat:actionViewClass="android.support.v7.widget.SearchView"
-        appcompat:showAsAction="ifRoom"/>
+        appcompat:showAsAction="always"/>
 
 </menu>
