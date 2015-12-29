@@ -184,8 +184,8 @@ public class MyActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
             View view = inflater.inflate(R.layout.fragment_a, container, false);
             listView = (ListView) view.findViewById(R.id.listView1);
-            SimpleAdapter adapter = new SimpleAdapter(getContext(), oslist, android.R.layout.simple_list_item_1,
-                    new String[]{"name", "address"}, new int[]{android.R.id.text1, android.R.id.text2});
+            /* SimpleAdapter adapter = new SimpleAdapter(getContext(), oslist, android.R.layout.simple_list_item_1,
+                    new String[]{"name", "address"}, new int[]{android.R.id.text1, android.R.id.text2}); */
             ArrayAdapter<String> original = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, data);
             listView.setAdapter(original);
             return view;
